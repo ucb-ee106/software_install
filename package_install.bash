@@ -6,9 +6,9 @@ cd ~/rethink_ws && catkin_make
 
 echo "source ~/rethink_ws/devel/setup.bash" >> ~/.bashrc
 
-yes | apt install ros-noetic-moveit
-yes | apt install ros-noetic-ros-controllers
-yes | apt install ros-noetic-slam-gmapping
+yes | sudo apt install ros-noetic-moveit
+yes | sudo apt install ros-noetic-ros-controllers
+yes | sudo apt install ros-noetic-slam-gmapping
 
 mkdir -p ~/rethink_ws/src/moveit_robots
 cd ~/rethink_ws/src/moveit_robots

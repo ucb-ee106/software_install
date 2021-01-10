@@ -6,9 +6,9 @@ cd ~/rethink_ws && catkin_make
 
 echo "source ~/rethink_ws/devel/setup.bash" >> ~/.bashrc
 
-sudo apt install -y ros-noetic-moveit
-sudo apt install -y ros-noetic-ros-controllers
-sudo apt install -y ros-noetic-slam-gmapping
+yes | apt install ros-noetic-moveit
+yes | apt install ros-noetic-ros-controllers
+yes | apt install ros-noetic-slam-gmapping
 
 mkdir -p ~/rethink_ws/src/moveit_robots
 cd ~/rethink_ws/src/moveit_robots
@@ -24,7 +24,7 @@ echo "****************************** Installing Sawyer Packages ****************
 cd ~/rethink_ws/src
 wstool init .
 git clone https://github.com/RethinkRobotics/sawyer_robot.git
-wstool merge sawyer_robot/sawyer_robot.rosinstall
+yes | wstool merge sawyer_robot/sawyer_robot.rosinstall
 wstool update
 
 ln -s ~/rethink_ws/src/intera_sdk/intera.sh ~/rethink_ws/intera.sh
@@ -33,14 +33,14 @@ sed -i '30s/.*/ros_version="noetic"/' ~/rethink_ws/src/intera_sdk/intera.sh
 cd ~/rethink_ws/src
 git clone https://github.com/RethinkRobotics/sawyer_simulator.git
 echo -e "- git:\n    local-name: sns_ik\n    uri: https://github.com/RethinkRobotics-opensource/sns_ik.git\n    version: melodic-devel" >> ~/rethink_ws/src/sawyer_simulator/sawyer_simulator.rosinstall
-wstool merge sawyer_simulator/sawyer_simulator.rosinstall
+yes | wstool merge sawyer_simulator/sawyer_simulator.rosinstall
 wstool update
 sed -i 's/CV_LOAD_IMAGE_UNCHANGED/cv::IMREAD_UNCHANGED/g' ~/rethink_ws/src/sawyer_simulator/sawyer_gazebo/src/head_interface.cpp
 
 echo "****************************** Installing Baxter Packages ******************************"
 
 cd ~/rethink_ws/src
-wstool merge https://raw.githubusercontent.com/RethinkRobotics/baxter/master/baxter_sdk.rosinstall
+yes | wstool merge https://raw.githubusercontent.com/RethinkRobotics/baxter/master/baxter_sdk.rosinstall
 wstool update
 sed -i 's/OSError, e/OSError as e/g' ~/rethink_ws/src/baxter_interface/src/baxter_interface/robot_enable.py
 
@@ -48,7 +48,7 @@ ln -s ~/rethink_ws/src/baxter/baxter.sh ~/rethink_ws/baxter.sh
 sed -i '30s/.*/ros_version="noetic"/' ~/rethink_ws/src/baxter/baxter.sh
 
 cd ~/rethink_ws/src
-wstool merge https://raw.githubusercontent.com/RethinkRobotics/baxter_simulator/kinetic-devel/baxter_simulator.rosinstall
+yes | wstool merge https://raw.githubusercontent.com/RethinkRobotics/baxter_simulator/kinetic-devel/baxter_simulator.rosinstall
 wstool update
 sed -i 's/boost/std/g' ~/rethink_ws/src/baxter_simulator/baxter_sim_kinematics/src/arm_kinematics.cpp
 sed -i 's/CV_LOAD_IMAGE_UNCHANGED/cv::IMREAD_UNCHANGED/g' ~/rethink_ws/src/baxter_simulator/baxter_sim_hardware/src/baxter_emulator.cpp

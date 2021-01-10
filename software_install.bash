@@ -1,18 +1,18 @@
-echo "****************************** Installing ROS Noetic"
+echo "****************************** Installing ROS Noetic ******************************"
 
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 sudo apt update
 sudo apt install ros-noetic-desktop-full
 
-echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-
 sudo apt-get install python3-rosdep python3-rosinstall-generator python3-vcstool build-essential python3-wstool
 sudo rosdep init
 rosdep update
 
-echo "****************************** Installing MoveIt!"
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+echo "****************************** Installing MoveIt! ******************************"
 
 mkdir -p ~/rethink_ws/src
 cd ~/rethink_ws/src && catkin_init_workspace
@@ -34,7 +34,7 @@ echo 'baxter' >> .git/info/sparse-checkout
 echo 'moveit_robots' >> .git/info/sparse-checkout
 git pull origin kinetic-devel
 
-echo "****************************** Installing Sawyer Packages"
+echo "****************************** Installing Sawyer Packages ******************************"
 
 cd ~/rethink_ws/src
 wstool init .
@@ -52,7 +52,7 @@ wstool merge sawyer_simulator/sawyer_simulator.rosinstall
 wstool update
 sed -i 's/CV_LOAD_IMAGE_UNCHANGED/cv::IMREAD_UNCHANGED/g' ~/rethink_ws/src/sawyer_simulator/sawyer_gazebo/src/head_interface.cpp
 
-echo "****************************** Installing Baxter Packages"
+echo "****************************** Installing Baxter Packages ******************************"
 
 cd ~/rethink_ws/src
 wstool merge https://raw.githubusercontent.com/RethinkRobotics/baxter/master/baxter_sdk.rosinstall
@@ -69,7 +69,7 @@ sed -i 's/boost/std/g' ~/rethink_ws/src/baxter_simulator/baxter_sim_kinematics/s
 sed -i 's/CV_LOAD_IMAGE_UNCHANGED/cv::IMREAD_UNCHANGED/g' ~/rethink_ws/src/baxter_simulator/baxter_sim_hardware/src/baxter_emulator.cpp
 cd ~/rethink_ws && catkin_make
 
-echo "****************************** Installing Turtlebot3"
+echo "****************************** Installing Turtlebot3 ******************************"
 mkdir -p ~/turtlebot3_ws/src
 cd ~/turtlebot3_ws/src
 git clone https://github.com/ROBOTIS-GIT/turtlebot3.git

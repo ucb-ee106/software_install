@@ -22,5 +22,5 @@ yes | sudo apt-get install python3-rosdep python3-rosinstall-generator python3-v
 echo "********************Run sudo rosdep init"
 sudo rosdep init
 
-echo "********************Run rosdeo update"
+echo "********************Run rosdep update"
 rosdep update

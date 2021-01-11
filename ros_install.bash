@@ -18,5 +18,9 @@ source ~/.bashrc
 
 echo "********************Install bootstrap dependencies"
 yes | sudo apt-get install python3-rosdep python3-rosinstall-generator python3-vcstool build-essential python3-wstool
+
+echo "********************Run rosdep init"
 rosdep init
+
+echo "********************Run rosdeo update"
 rosdep update

@@ -16,6 +16,9 @@ echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 echo "********************Source .bashrc file"
 source ~/.bashrc
 
+echo "********************Set up computer to use Python3"
+sudo apt install python-is-python3
+
 echo "********************Install bootstrap dependencies"
 yes | sudo apt-get install python3-rosdep python3-rosinstall-generator python3-vcstool build-essential python3-wstool
 

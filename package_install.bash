@@ -108,6 +108,9 @@ echo "source ~/turtlebot3_ws/devel/setup.bash" >> ~/.bashrc
 echo "********************Set the TurtleBot3 model to Burger"
 echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
 
+echo "********************Source .bashrc file"
+source ~/.bashrc
+
 echo "****************************** Installing AR Tags Package ******************************"
 
 echo "********************Create a workspace for the ar_tags package"
@@ -124,3 +127,6 @@ cd ~/ar_tags_ws && catkin_make
 
 echo "********************Source workspace in .bashrc file"
 echo "source ~/ar_tags_ws/devel/setup.bash" >> ~/.bashrc
+
+echo "********************Source .bashrc file"
+source ~/.bashrc

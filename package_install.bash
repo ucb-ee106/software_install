@@ -78,9 +78,6 @@ yes | wstool merge https://raw.githubusercontent.com/ucb-ee106/baxter_simulator/
 echo "********************Run wstool update"
 wstool update
 
-echo "********************Build Rethink workspace"
-cd ~/rethink_ws && catkin_make
-
 echo "********************Create a symlink for baxter.sh"
 ln -s ~/106b_packages_ws/src/baxter/baxter.sh ~/106b_packages_ws/baxter.sh
 

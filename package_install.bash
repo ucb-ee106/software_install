@@ -98,19 +98,37 @@ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.
 echo "********************Set the TurtleBot3 model to Burger"
 echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
 
-echo "****************************** Installing AR Tags Package ******************************"
+echo "****************************** Installing AR Tags Packages ******************************"
 
 echo "********************Move to src directory of workspace"
 cd ~/106b_packages_ws/src
 
-echo "********************Clone ar_tags repository"
-git clone https://github.com/ucb-ee106/ar_tags
+echo "********************Install AR tags packages"
+wstool merge https://raw.githubusercontent.com/ucb-ee106/ar_tags/master/ar_tags.rosinstall
+
+echo "********************Run wstool update"
+wstool update
+
+echo "********************Move to ar_tags directory"
+cd ~/106b_packages_ws/src/ar_tags
+
+echo "********************Install AR tags submodule"
+git submodule update --init --recursive
+
+echo "********************Install ros-noetic-marker-msgs package"
+yes | sudo apt install ros-noetic-marker-msgs
+
+echo "********************Install libv4l-dev package"
+yes | sudo apt-get install libv4l-dev
+
+echo "********************Install libsdl1.2-dev package"
+yes | sudo apt-get install libsdl1.2-dev
 
 echo "********************Build workspace"
 cd ~/106b_packages_ws && catkin_make
 
 echo "********************Set Gazebo Model Path"
-echo "export GAZEBO_MODEL_PATH=~/106b_packages_ws/src/ar_tags/models:$GAZEBO_MODEL_PATH" >> ~/.bashrc
+echo "export GAZEBO_MODEL_PATH=~/106b_packages_ws/src/ar_tags/aruco_gazebo:$GAZEBO_MODEL_PATH" >> ~/.bashrc
 
 echo "********************Source .bashrc file"
 source ~/.bashrc
